@@ -19,6 +19,7 @@ public class Main {
             interrupt=0;
             counter=0;
             end=0;
+            //System.out.println("Burst: " + burstcount + " interrupt: " + interrupt + " counter: " + counter + " end: " + end);
 
             for(int j=0; j<queue.length;j++){
                 
@@ -31,19 +32,24 @@ public class Main {
                     burstcount--;
                     
                     interrupt=0;
+
+                    if(burstcount==0)
+                    {
+                        end=j+1;
+                    }
                   
                 }
 
                 else if(counter>0 && process[i]==queue[j]) //check if the next is the same, then add to burst count
                 {
-                  //  System.out.println("process "+process[i]+" continues at "+ j);
+                    //System.out.println("process "+process[i]+" continues at "+ j);
                     burstcount--;
                     wait[i]+=interrupt;
                     interrupt=0;
                     
                     if(burstcount==0)
                     {
-                        end=j;
+                        end=j+1;
                     }
                 }
 
@@ -72,16 +78,17 @@ public class Main {
     }
     public static ArrayList<Integer> FIFO(int[] process, int[] arrival, int[] burst){
         // Test Print All Elements
+        /*
         for(int i = 0; i < process.length; i++){
             System.out.println(process[i] + " " + arrival[i] + " " + burst[i]);
-        }
+        }*/
         // define arraylist queue
         ArrayList<Integer> queue = new ArrayList<>();
         // loop through process, arrival, and burst
         // process
 
         for(int i = 1; i <= process.length; i++){
-            System.out.println(i);
+            // System.out.println(i);
             // don't care about arrival time, FIFO
             for(int j = 0; j < burst[i-1]; j++){
                 queue.add(i);
@@ -174,7 +181,7 @@ public class Main {
 
         String path = "src\\input_files\\";
 
-        System.out.print("Enter file name:");
+        System.out.print("Enter file name: ");
         name=sc.next();
         path = path.concat(name + ".txt");
         sc.close();
