@@ -69,12 +69,12 @@ public class Main {
                 break;
         }
 
-sc2.close();
-        
-}
-    catch(FileNotFoundException e) {
+        sc2.close();
+
+        }
+        catch(FileNotFoundException e) {
             System.out.println(name + ".txt not found.");
-          }
+        }
           
     }
 }
