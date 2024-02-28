@@ -66,6 +66,8 @@ public class Main {
                 break;
             // RR
             case 3:
+                ArrayList<ArrayList<Integer>> q3 = RR.RR(Quantum, Process,Arrival,Burst);
+                // waitCalc.waitCalcPreemtive(q3);
                 break;
         }
 
