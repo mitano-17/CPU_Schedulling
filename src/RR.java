@@ -9,6 +9,8 @@ public class RR {
     private static int servedInd= 3; 
     private static int waitInd= 4;
 
+    Process myProcess= new Process(1,2,3);
+
     public static void printMap (int [] processList, HashMap<Integer, Integer> myMap){
         int j= 0;
         for(int i=0; i<myMap.size(); i++){
@@ -34,7 +36,7 @@ public class RR {
         return sum;
     }
 
-    public static ArrayList<int[]> RR(int Quantum, int[] process, int[] arrival, int[] burst)
+    public static ArrayList< Process > RRAlgo(int Quantum, int[] process, int[] arrival, int[] burst)
     {
         int quantum= Quantum;
         int[] processList= process;
@@ -48,7 +50,7 @@ public class RR {
         //Initialize burstMap for easy access based on processId, in case it isn't chronological 
         initializeMap(processList, burstList, burstMap);
         initializeMap(processList, arrivalList, arrivalMap);
-        
+
         int burstSum= getArraySum(burstList);
         int currentProcessIndex= 0;
         
@@ -57,19 +59,12 @@ public class RR {
             //Check if new process arrived to add to queue 
             for(int j=0; j<arrivalMap.size(); j++){
                 if(arrivalMap.get(processList[j]) == i){
-
-                    Process myProcess= new Process(1,2,3);
-                    
                     queue.add( new Process(processList[j], burstMap.get(processList[j]), arrivalMap.get(processList[j])) );
                 }
             }
 
-            currentProcessIndex= ;
-
             //Add pre empted processes to queue 
-            if(queue.get()){
-
-            }
+            
         }
 
         

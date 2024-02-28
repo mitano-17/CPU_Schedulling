@@ -6,10 +6,10 @@ public class Process {
     private int wait;       //start-arrival 
 
     //constructor 
-    public Process(int processId, int burst, int arrival){
-        this.processId= processId;
-        this.burst= burst; 
-        this.arrival= arrival;
+    public Process(int newProcessId, int newBurst, int newArrival){
+        this.processId= newProcessId;
+        this.burst= newBurst; 
+        this.arrival= newArrival;
         this.start= 0;
         this.wait= 0; 
     }

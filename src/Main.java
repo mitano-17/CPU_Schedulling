@@ -66,7 +66,7 @@ public class Main {
                 break;
             // RR
             case 3:
-                HashMap<Integer, int[]> q3 = RR.RR(Quantum, Process,Arrival,Burst);
+                ArrayList<Process> q3 = RR.RRAlgo(Quantum, Process,Arrival,Burst);
                 // waitCalc.waitCalcPreemtive(q3);
                 break;
         }
