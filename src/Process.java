@@ -14,8 +14,17 @@ public class Process {
         this.wait= 0; 
     }
 
+    public void decrementBurst(){
+        this.burst--;
+    }
+
     public void calculateWait(){
         this.wait = this.start - this.arrival;
+    }
+
+
+    public void printProcess(){
+        System.out.println("ID: " + this.processId + " burst: "+ this.burst + " arrival: "+ this.arrival + " start: "+ this.start +" wait:" + this.wait);
     }
 
     //generic getters and setters below

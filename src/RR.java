@@ -52,19 +52,49 @@ public class RR {
         initializeMap(processList, arrivalList, arrivalMap);
 
         int burstSum= getArraySum(burstList);
-        int currentProcessIndex= 0;
-        
+        int currentProcessQueueIndex= 0;
+        // int burstMinusQuant = 0; 
+        Process currentProcess;
+        String preemptMessage= "";
         //burstSum limit ensures that all processes finish their burst 
         for(int i=0; i< burstSum; i++){
+
             //Check if new process arrived to add to queue 
             for(int j=0; j<arrivalMap.size(); j++){
                 if(arrivalMap.get(processList[j]) == i){
+                //     burstMinusQuant=  
+                //     if(burstMap.get(processList[j]) > 10)
+                //         burstMinusQuant= burstMinusQuant - 10; 
                     queue.add( new Process(processList[j], burstMap.get(processList[j]), arrivalMap.get(processList[j])) );
                 }
             }
+            //
+            currentProcess= queue.get(currentProcessQueueIndex);
 
-            //Add pre empted processes to queue 
-            
+            //Process the process for this i time 
+            if(currentProcess.getBurst() > 0) 
+                currentProcess.decrementBurst();
+            //if process done, OR q=10 & i>0 ... NEXT in queue                
+            if(currentProcess.getBurst() == 0 || (i+1)%10 == 0) {
+                if(currentProcess.getBurst() != 0){
+                    preemptMessage= "Process # " + currentProcess.getProcessId() + " preempted.";
+                    queue.add(currentProcess);
+                    queue.getLast().setArrival(i+1);
+                }else{
+                    preemptMessage="";
+                }
+
+                queue.get(currentProcessQueueIndex).setStart(i);
+
+                if(i>0)
+                    currentProcessQueueIndex++;
+            }
+                
+   
+            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+            if(preemptMessage.length() > 1){
+                System.out.println(preemptMessage);
+            }
         }
 
         
@@ -72,6 +102,9 @@ public class RR {
         printMap(processList, burstMap);
         printMap(processList, arrivalMap);
 
+        for(int i=0; i<queue.size(); i++){
+            queue.get(i).printProcess();
+        }
         return queue;
     }
     
