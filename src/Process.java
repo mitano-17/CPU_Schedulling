@@ -10,8 +10,17 @@ public class Process {
         this.processId= newProcessId;
         this.burst= newBurst; 
         this.arrival= newArrival;
-        this.start= 0;
-        this.wait= 0; 
+        this.start= -1;
+        this.wait= -1; 
+    }
+
+    //duplicate constructor 
+    public Process (Process oldProcess, int newArrival){
+        this.processId= oldProcess.processId;
+        this.burst= oldProcess.burst; 
+        this.arrival= newArrival;
+        this.start= -1;
+        this.wait= -1; 
     }
 
     public void decrementBurst(){

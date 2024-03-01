@@ -56,6 +56,7 @@ public class RR {
         // int burstMinusQuant = 0; 
         Process currentProcess;
         String preemptMessage= "";
+
         //burstSum limit ensures that all processes finish their burst 
         for(int i=0; i< burstSum; i++){
 
@@ -71,29 +72,40 @@ public class RR {
             //
             currentProcess= queue.get(currentProcessQueueIndex);
 
+            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+           
             //Process the process for this i time 
             if(currentProcess.getBurst() > 0) 
                 currentProcess.decrementBurst();
+
             //if process done, OR q=10 & i>0 ... NEXT in queue                
             if(currentProcess.getBurst() == 0 || (i+1)%10 == 0) {
                 if(currentProcess.getBurst() != 0){
-                    preemptMessage= "Process # " + currentProcess.getProcessId() + " preempted.";
-                    queue.add(currentProcess);
-                    queue.getLast().setArrival(i+1);
-                }else{
-                    preemptMessage="";
+                    preemptMessage= "Process # " + currentProcess.getProcessId() + " preempted at clock " + i;
+                    queue.add(new Process(currentProcess, i));                   
                 }
-
-                queue.get(currentProcessQueueIndex).setStart(i);
-
-                if(i>0)
-                    currentProcessQueueIndex++;
-            }
                 
-   
-            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+                if (currentProcess.getStart() == -1){
+                    currentProcess.setStart(i);
+                    System.out.println("start set to "+ i);
+                }
+                    
+
+                if(i>0){
+                    currentProcess.calculateWait();
+                    if(currentProcess.getStart() == currentProcess.getWait()){
+                        currentProcess.setStart(0);
+                        currentProcess.setWait(0);
+                    }
+
+                    currentProcessQueueIndex++;
+                    System.out.println("Current Process index: " + currentProcessQueueIndex);
+                }
+            }
+
             if(preemptMessage.length() > 1){
                 System.out.println(preemptMessage);
+                preemptMessage="";
             }
         }
 
