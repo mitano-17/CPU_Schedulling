@@ -52,11 +52,11 @@ public class FIFO {
             }
         }
 
-        System.out.println("Execution Queue: ");
+        /*System.out.println("Execution Queue: ");
         for (Integer id : queue) {
             System.out.print(id + " ");
         }
-        System.out.println();
+        System.out.println();*/
         // return array list
         return queue;
     }
