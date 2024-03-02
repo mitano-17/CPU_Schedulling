@@ -60,6 +60,7 @@ public class waitCalc {
 
                 if(j==queue.length-1)
                 {
+                {
                     System.out.println("P["+process[i]+"] start time: "+begin[i]+" end time: "+end+ "| waiting time: "+wait[i]);
                 }
 

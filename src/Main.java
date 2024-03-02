@@ -54,15 +54,17 @@ public class Main {
             // FIFO
             case 0:
                 ArrayList<Integer> q0 = FIFO.FIFO(Process,Arrival,Burst);
-                waitCalc.waitCalc(q0,Process,Arrival,Burst);
+                WaitCalc2.WaitCalc2(q0,Process,Arrival,Burst);
                 break;
             // SJF
             case 1:
                 ArrayList<Integer> q1 = SJF.SJF(Process,Arrival,Burst);
-                waitCalc.waitCalc(q1,Process,Arrival,Burst);
+                WaitCalc2.WaitCalc2(q1,Process,Arrival,Burst);
                 break;
             // SRTF
             case 2:
+                ArrayList<Integer> q2 = SRTF.SRTF(Process,Arrival,Burst);
+                WaitCalc2.WaitCalc2(q2,Process,Arrival,Burst);
                 break;
             // RR
             case 3:
