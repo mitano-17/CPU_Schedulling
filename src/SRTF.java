@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class SRTF {
 
-    public static ArrayList<Integer> SRTF(int[] process, int[] arrival, int[] burst) {
+    public static ArrayList<Integer> SRTFAlgo(int[] process, int[] arrival, int[] burst) {
         int n = process.length;
         int[] rem = new int[n];
         ArrayList<Integer> queue = new ArrayList<>();

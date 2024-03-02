@@ -53,17 +53,17 @@ public class Main {
         switch(Algo){
             // FIFO
             case 0:
-                ArrayList<Integer> q0 = FIFO.FIFO(Process,Arrival,Burst);
+                ArrayList<Integer> q0 = FIFO.FIFOAlgo(Process,Arrival,Burst);
                 WaitCalc.WaitCalc2(q0,Process,Arrival,Burst);
                 break;
             // SJF
             case 1:
-                ArrayList<Integer> q1 = SJF.SJF(Process,Arrival,Burst);
+                ArrayList<Integer> q1 = SJF.SJFAlgo(Process,Arrival,Burst);
                 WaitCalc.WaitCalc2(q1,Process,Arrival,Burst);
                 break;
             // SRTF
             case 2:
-                ArrayList<Integer> q2 = SRTF.SRTF(Process,Arrival,Burst);
+                ArrayList<Integer> q2 = SRTF.SRTFAlgo(Process,Arrival,Burst);
                 WaitCalc.WaitCalc2(q2,Process,Arrival,Burst);
                 break;
             // RR

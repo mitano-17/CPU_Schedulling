@@ -19,7 +19,7 @@ public class FIFO {
         }
     }
 
-    public static ArrayList<Integer> FIFO(int[] process, int[] arrival, int[] burst){
+    public static ArrayList<Integer> FIFOAlgo(int[] process, int[] arrival, int[] burst){
         // Test Print All Elements
         /*
         for(int i = 0; i < process.length; i++){

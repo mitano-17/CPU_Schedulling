@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class SJF {
-    public static ArrayList<Integer> SJF(int[] process, int[] arrival, int[] burst)
+    public static ArrayList<Integer> SJFAlgo(int[] process, int[] arrival, int[] burst)
     {
         ArrayList<Integer> queue = new ArrayList<>();
         ArrayList<Label> contest =new ArrayList<>();
