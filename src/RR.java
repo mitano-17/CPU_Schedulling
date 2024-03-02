@@ -72,7 +72,7 @@ public class RR {
             //
             currentProcess= queue.get(currentProcessQueueIndex);
 
-            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+            
            
             //Process the process for this i time 
             if(currentProcess.getBurst() > 0) 
@@ -103,6 +103,7 @@ public class RR {
                 }
             }
 
+            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
             if(preemptMessage.length() > 1){
                 System.out.println(preemptMessage);
                 preemptMessage="";
