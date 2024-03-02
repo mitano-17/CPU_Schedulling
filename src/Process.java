@@ -3,6 +3,7 @@ public class Process {
     private int burst;      //
     private int arrival;    //
     private int start;      //count or timeblock the process was served. aka when it starts being processed 
+    private int end;
     private int wait;       //start-arrival 
 
     //constructor 
@@ -11,6 +12,7 @@ public class Process {
         this.burst= newBurst; 
         this.arrival= newArrival;
         this.start= -1;
+        this.end= -1;
         this.wait= -1; 
     }
 
@@ -20,6 +22,7 @@ public class Process {
         this.burst= oldProcess.burst; 
         this.arrival= newArrival;
         this.start= -1;
+        this.end= -1;
         this.wait= -1; 
     }
 
@@ -33,7 +36,7 @@ public class Process {
 
 
     public void printProcess(){
-        System.out.println("ID: " + this.processId + " burst: "+ this.burst + " arrival: "+ this.arrival + " start: "+ this.start +" wait:" + this.wait);
+        System.out.println("P[" + this.processId + "] start time: "+ this.start +" end time: "+ this.end +" | waiting time:" + this.wait);
     }
 
     //generic getters and setters below
@@ -67,6 +70,14 @@ public class Process {
 
     public void setStart(int start) {
         this.start = start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
     }
 
     public int getWait() {
