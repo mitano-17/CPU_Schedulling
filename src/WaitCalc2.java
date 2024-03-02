@@ -33,7 +33,14 @@ public class WaitCalc2 {
         for (int i = 0; i < q.size(); i++) {
             // get process id in scheduling result
             int id = q.get(i);
-            int proc = id-1;
+            int proc = -1;
+
+            for (int j = 0; j < process.length; j++) {
+                if (process[j] == id) {
+                    proc = j;
+                    break;
+                }
+            }
 
             int wait = i - latestEnd[proc];
             int start = i;
@@ -52,7 +59,7 @@ public class WaitCalc2 {
         // print wait times
         float sum = 0;
         for (procWait wt : waitlist) {
-            System.out.println("P[" + wt.id + "] start time: " + wt.start + " end time: " + wt.end + " | waiting time: " + wt.wait);
+            System.out.println("P[" + wt.id + "] Start time: " + wt.start + " End time: " + wt.end + " | Waiting time: " + wt.wait);
             sum += wt.wait;
         }
         float result = sum / process.length;

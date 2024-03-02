@@ -43,11 +43,11 @@ public class SRTF {
             }
         }
         
-        /*System.out.println("Execution Queue: ");
+        System.out.println("Execution Queue: ");
         for (Integer id : queue) {
             System.out.print(id + " ");
         }
-        System.out.println();*/
+        System.out.println();
 
         return queue;
     }

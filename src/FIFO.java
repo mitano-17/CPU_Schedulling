@@ -19,6 +19,12 @@ public class FIFO {
                 queue.add(i);
             }
         }
+
+        System.out.println("Execution Queue: ");
+        for (Integer id : queue) {
+            System.out.print(id + " ");
+        }
+        System.out.println();
         // return array list
         return queue;
     }
