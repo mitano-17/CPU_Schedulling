@@ -68,6 +68,8 @@ public class Main {
                 break;
             // RR
             case 3:
+                ArrayList<Process> q3 = RR.RRAlgo(Quantum, Process,Arrival,Burst);
+                // waitCalc.waitCalcPreemtive(q3);
                 break;
         }
 

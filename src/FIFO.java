@@ -13,7 +13,7 @@ public class FIFO {
         // process
 
         for(int i = 1; i <= process.length; i++){
-            // System.out.println(i);
+            //System.out.println(i);
             // don't care about arrival time, FIFO
             for(int j = 0; j < burst[i-1]; j++){
                 queue.add(i);
