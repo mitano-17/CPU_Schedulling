@@ -70,7 +70,7 @@ public class RR {
 
             if (currentProcess.getStart() == -1){
                 currentProcess.setStart(i);
-                //System.out.println("start set to "+ i);
+                System.out.println(currentProcess.getProcessId() + "'s start set to "+ i);
             }
              
 
@@ -84,20 +84,20 @@ public class RR {
                 if(i>0){
                     currentProcess.calculateWait();
                     currentProcess.setEnd(i+1);
-                    if(currentProcess.getStart() == currentProcess.getWait()){
-                        currentProcess.setStart(0);
-                        currentProcess.setWait(0);
-                    }
+                    // if(currentProcess.getStart() == currentProcess.getWait()){
+                    //     currentProcess.setStart(0);
+                    //     currentProcess.setWait(0);
+                    // }
 
                     currentProcessQueueIndex++;
-                    quantumCounter= 10;
-                   // System.out.println("Current Process index: " + currentProcessQueueIndex);
+                    quantumCounter= Quantum;
+                    System.out.println("Current Process index: " + currentProcessQueueIndex);
                 }
             }
 
-            //System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
             if(preemptMessage.length() > 1){
-                //System.out.println(preemptMessage);
+                System.out.println(preemptMessage);
                 preemptMessage="";
             }
         }
