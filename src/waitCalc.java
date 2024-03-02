@@ -1,79 +1,68 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class waitCalc {
-    public static void waitCalc(ArrayList<Integer> q, int[] process, int[] arrival, int[] burst){
-        int[] queue= q.stream().mapToInt(i -> i).toArray();
+public class WaitCalc {
+    static class procWait implements Comparable<procWait>{
+        int id; 
+        int start; 
+        int end; 
+        int wait; 
 
-        int[] wait=new int[process.length];
-        int[] begin=new int[process.length];
-        int counter=0; //check for first instance
-        int burstcount=0; //burst left
-        int interrupt=0; //flag if there is an interrupt
-        int end=0;
-        float sum=0;
-        float result;
-        for(int i=0; i<process.length;i++)
-        {
-            burstcount=burst[i];
-            interrupt=0;
-            counter=0;
-            end=0;
-            //System.out.println("Burst: " + burstcount + " interrupt: " + interrupt + " counter: " + counter + " end: " + end);
+        public procWait(int id, int start, int end, int wait) {
+            this.id = id;
+            this.start = start;
+            this.end = end;
+            this.wait = wait;
+        }
 
-            for(int j=0; j<queue.length;j++){
+        // https://www.geeksforgeeks.org/how-to-sort-an-arraylist-of-objects-by-property-in-java/
+        @Override
+        public int compareTo(procWait other) {
+            return Integer.compare(this.start, other.start);
+        }
+    }
 
-                if(process[i]==queue[j] && counter==0)
-                {
-                    //System.out.println("First instance of process "+process[i]+" is at "+ j);
-                    wait[i]=j-arrival[i];
-                    begin[i]=j;
-                    counter++;
-                    burstcount--;
+    public static void WaitCalc2(ArrayList<Integer> q, int[] process, int[] arrival, int[] burst) {
+        ArrayList<procWait> waitlist = new ArrayList<>(); 
+        int[] latestEnd = new int[process.length]; 
 
-                    interrupt=0;
+        for (int i = 0; i < process.length; i++) {
+            latestEnd[i] = arrival[i];
+        }
 
-                    if(burstcount==0)
-                    {
-                        end=j+1;
-                    }
+        for (int i = 0; i < q.size(); i++) {
+            // get process id in scheduling result
+            int id = q.get(i);
+            int proc = -1;
 
+            for (int j = 0; j < process.length; j++) {
+                if (process[j] == id) {
+                    proc = j;
+                    break;
                 }
-
-                else if(counter>0 && process[i]==queue[j]) //check if the next is the same, then add to burst count
-                {
-                    //System.out.println("process "+process[i]+" continues at "+ j);
-                    burstcount--;
-                    wait[i]+=interrupt;
-                    interrupt=0;
-
-                    if(burstcount==0)
-                    {
-                        end=j+1;
-                    }
-                }
-
-                else if(counter>0 && process[i]!=queue[j] && burstcount>0 && burstcount!=burst[i])//count how much interrupt is there
-                {
-                    interrupt++;
-                    //System.out.println("Interrupt for process "+process[i]+": " +interrupt);
-                }
-
-                if(j==queue.length-1)
-                {
-                {
-                    System.out.println("P["+process[i]+"] start time: "+begin[i]+" end time: "+end+ "| waiting time: "+wait[i]);
-                }
-
             }
-            counter=0;
-        }
 
-        for( int i=0;i<wait.length;i++)
-        {
-            sum+=wait[i];
-        }
+            int wait = i - latestEnd[proc];
+            int start = i;
+            int end = i + 1;
+            // check for multiple of the same process, skip to end
+            while (i + 1 < q.size() && q.get(i + 1) == id) {
+                i++;
+                end++;
+            }
 
-        result= sum/wait.length;
-        System.out.println("Average waiting Time: "+ String.format("%.2f", result));
+            waitlist.add(new procWait(id, start, end, wait));
+            latestEnd[proc] = end; // update to last end time
+        }
+        Collections.sort(waitlist);
+
+        // print wait times
+        float sum = 0;
+        for (procWait wt : waitlist) {
+            System.out.println("P[" + wt.id + "] Start time: " + wt.start + " End time: " + wt.end + " | Waiting time: " + wt.wait);
+            sum += wt.wait;
+        }
+        float result = sum / process.length;
+        System.out.println("Average waiting Time: " + String.format("%.2f", result));
     }
 }
