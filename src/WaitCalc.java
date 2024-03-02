@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class WaitCalc2 {
+public class WaitCalc {
     static class procWait implements Comparable<procWait>{
         int id; 
         int start; 
