@@ -70,7 +70,7 @@ public class RR {
 
             if (currentProcess.getStart() == -1){
                 currentProcess.setStart(i);
-                System.out.println(currentProcess.getProcessId() + "'s start set to "+ i);
+                //System.out.println(currentProcess.getProcessId() + "'s start set to "+ i);
             }
              
 
@@ -91,13 +91,13 @@ public class RR {
 
                     currentProcessQueueIndex++;
                     quantumCounter= Quantum;
-                    System.out.println("Current Process index: " + currentProcessQueueIndex);
+                    //System.out.println("Current Process index: " + currentProcessQueueIndex);
                 }
             }
 
-            System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
+           // System.out.println("clock: "+ i +" currentProcessQueueIndex: "+ currentProcessQueueIndex + " process name: "+ currentProcess.getProcessId() + " Remaining burst: "+ currentProcess.getBurst());
             if(preemptMessage.length() > 1){
-                System.out.println(preemptMessage);
+                //System.out.println(preemptMessage);
                 preemptMessage="";
             }
         }
