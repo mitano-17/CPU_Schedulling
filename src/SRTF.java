@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class SRTF {
 
     public static ArrayList<Integer> SRTF(int[] process, int[] arrival, int[] burst) {
-        System.out.println("SRTF");
         int n = process.length;
         int[] rem = new int[n];
         ArrayList<Integer> queue = new ArrayList<>();
@@ -44,11 +43,11 @@ public class SRTF {
             }
         }
         
-        System.out.println("Execution Queue: ");
-        for (Integer procId : queue) {
-            System.out.print(procId + " ");
+        /*System.out.println("Execution Queue: ");
+        for (Integer id : queue) {
+            System.out.print(id + " ");
         }
-        System.out.println();
+        System.out.println();*/
 
         return queue;
     }
