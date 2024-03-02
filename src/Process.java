@@ -36,7 +36,7 @@ public class Process {
 
 
     public void printProcess(){
-        System.out.println("P[" + this.processId + "] start time: "+ this.start +" end time: "+ this.end +" | waiting time:" + this.wait);
+        System.out.println("P[" + this.processId + "] Start time: "+ this.start +" End time: "+ this.end +" | Waiting time:" + this.wait);
     }
 
     //generic getters and setters below
