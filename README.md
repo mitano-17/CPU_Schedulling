@@ -36,6 +36,8 @@ The program's output should include the following:
 `Format: Average waiting time: <AWT>`
 - The output should be sorted in ascending order according to the time started.
 
+## Required Program Interaction
+There should be minimal program interaction as shown in the sample runs below. The program will just ask the user to input the name of the input text file. If the text file exists, its contents will be processed, the output will be displayed, and the program terminates. If the text file does not exist, the program outputs `<FILENAME.TXT>` not found. error message and then terminates.
 
 <h2>💌 Credits ✉️</h2>
-This project is done by <b>ERMITANO, Kate Justine</b> as a requirement to pass CSOPESY under the instructions of <b>Dr Edward Tighe</b>, submitted on April 20, 2024.
+This project is done by <b>ERMITANO, Kate Justine, KHO, Denise Jilian, URETA, Therese</b>, and <b>YU, Beverly Kate</b>b> as a requirement to pass CSOPESY under the instructions of <b>Dr Edward Tighe</b>, submitted on April 20, 2024.
