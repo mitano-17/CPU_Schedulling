@@ -17,7 +17,12 @@ The first line contains three integers separated by space, 𝑋 𝑌 𝑍.
 - There will be 𝑌 lines of space-separated integers 𝐴 𝐵 𝐶 where 𝐴 is the process ID, 𝐵 is the arrival time, and 𝐶 is the burst time.
 
 See the table below for the CPU scheduling algorithm and the corresponding value of 𝑋.
-    
+| CPU Scheduling Algorithm |  Value of X  |
+|:-----|:--------:|
+| FCFS   | 0 |
+| SJF   |  1  |
+| SRTF   | 2 |
+| RR   | 3 |
 
 
 <h2>💌 Credits ✉️</h2>
