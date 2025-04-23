@@ -24,6 +24,18 @@ See the table below for the CPU scheduling algorithm and the corresponding value
 | SRTF   | 2 |
 | RR   | 3 |
 
+## Output
+The program's output should include the following:
+
+- 𝑌 lines of processes with the process ID, start time, end time, and total waiting time where start time, end time, and waiting time are greater than or equal to 0.
+
+`Format: P[A] start time: <S1> end time: <E1> | Waiting time: <WT>`
+- If there are multiple start and end times for a process, display them separately from each other.
+- An additional last line at the end of the output is the average waiting time of the processes. See the table with the sample input and output below.
+
+`Format: Average waiting time: <AWT>`
+- The output should be sorted in ascending order according to the time started.
+
 
 <h2>💌 Credits ✉️</h2>
 This project is done by <b>ERMITANO, Kate Justine</b> as a requirement to pass CSOPESY under the instructions of <b>Dr Edward Tighe</b>, submitted on April 20, 2024.
